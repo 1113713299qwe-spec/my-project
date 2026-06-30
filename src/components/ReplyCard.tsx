@@ -1,0 +1,3 @@
+'use client';
+import { readLocal, writeLocal } from '@/lib/storage';
+export function ReplyCard({title,text}:{title:string;text:string}){function copy(){navigator.clipboard.writeText(text);alert('已复制')}function fav(){const arr=readLocal<string[]>('favorite_replies',[]);writeLocal('favorite_replies',[text,...arr]);alert('已收藏')}return <div className="rounded-2xl border p-4"><div className="mb-2 font-semibold">{title}</div><p className="whitespace-pre-wrap text-neutral-700">{text}</p><div className="mt-3 flex gap-2"><button className="btn-secondary py-2" onClick={copy}>复制</button><button className="btn-secondary py-2" onClick={fav}>收藏</button></div></div>}
